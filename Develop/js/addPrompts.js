@@ -70,8 +70,8 @@ function addRole() {
         if (err) throw err;
         res.forEach(department => {
             departmentName.push(department.name);
-            var newDepartment = {departmentTitle: department.name, departmentId: department.id};
-            allDepartments.push(newDepartment);
+            var thisDepartment = {departmentTitle: department.name, departmentId: department.id};
+            allDepartments.push(thisDepartment);
         })
         inquirer.prompt([
             {
@@ -95,7 +95,6 @@ function addRole() {
             allDepartments.forEach(department => {
                 if (data.newRoleDepartment === department.departmentTitle) {
                     matchingDepartmentId = department.departmentId;
-                    console.log(matchingDepartmentId);
                 }
             });
             connection.query("INSERT INTO role SET ?",
@@ -115,8 +114,81 @@ function addRole() {
 
 function addEmployee() {
     console.log(`This functionality will be available in future updates`);
-    app.mainPrompt;
-}
+
+    var roleName = [];
+    var allRoles = [];
+    var managerName = [];
+    var allManagers = [];
+    connection.query("SELECT * FROM role", function (err, res) {
+        if (err) throw err;
+        res.forEach(role => {
+            roleName.push(role.title);
+            var thisRole = {roleTitle: role.title, roleId: role.id};
+            allRoles.push(thisRole);
+        })
+        connection.query("SELECT employee.id, employee.first_name, employee.last_name FROM employee INNER JOIN role ON employee.role_id=role.id WHERE role.title LIKE '%Manager%'", 
+        function (err, res) {
+            if (err) throw err;
+            res.forEach(manager => {
+                thisManagerName = manager.first_name + " " + manager.last_name;
+                managerName.push(thisManagerName);
+                var thisManager = {managerId: manager.id, managerName: thisManagerName};
+                allManagers.push(thisManager);
+            })
+            managerName.push("NO MANAGER");
+            inquirer.prompt([
+                {
+                    name: "firstName",
+                    type: "input",
+                    message: "What is the new employee's first name?",
+                },
+                {
+                    name: "lastName",
+                    type: "input",
+                    message: "What is the new employee's last name?"
+                },
+                {
+                    name: "employeeRole",
+                    type: "list",
+                    message: "What is the new employee's role?",
+                    choices: roleName
+                },
+                {
+                    name: "employeeManager",
+                    type: "list",
+                    message: "Who is the new employee's manager?",
+                    choices: managerName
+                }    
+            ]).then(function (data = { firstName, lastName, employeeRole, employeeManager }) {
+                console.log(data);
+                var matchingRoleId;
+                allRoles.forEach(role => {
+                    if (data.employeeRole === role.roleTitle) {
+                        matchingRoleId = role.roleId;
+                    }
+                });
+                var matchingManagerId = "null";
+                allManagers.forEach(manager => {
+                    if (data.employeeManager === manager.managerName) {
+                        matchingManagerId = manager.managerId;
+                    }
+                });
+                connection.query("INSERT INTO employee SET ?",
+                {
+                    first_name: data.firstName,
+                    last_name: data.lastName,
+                    role_id: matchingRoleId,
+                    manager_id: matchingManagerId
+                },
+                function (err, res) {
+                    if (err) throw err;
+                    console.log(`Added ${data.firstName} ${data.lastName} to Employees.`);
+                    app.mainPrompt();
+                });
+            });
+        });
+    });
+};
 
 module.exports = {
     addPrompt,
