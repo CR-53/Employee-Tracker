@@ -35,13 +35,13 @@ function mainPrompt() {
                 break;
             
             case "Update":
-                console.log(`update selected`);
-                // update ehre
+                console.log(`This functionality will be available in future updates.`);
+                mainPrompt();
                 break;
             
             case "Delete":
-                console.log(`delete selected`);
-                // delete here
+                console.log(`This functionality will be available in future updates.`);
+                mainPrompt();
                 break;
             
             case "EXIT":
