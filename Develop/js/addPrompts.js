@@ -113,8 +113,6 @@ function addRole() {
 }
 
 function addEmployee() {
-    console.log(`This functionality will be available in future updates`);
-
     var roleName = [];
     var allRoles = [];
     var managerName = [];
