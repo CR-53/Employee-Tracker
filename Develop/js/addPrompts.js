@@ -158,7 +158,6 @@ function addEmployee() {
                     choices: managerName
                 }    
             ]).then(function (data = { firstName, lastName, employeeRole, employeeManager }) {
-                console.log(data);
                 var matchingRoleId;
                 allRoles.forEach(role => {
                     if (data.employeeRole === role.roleTitle) {

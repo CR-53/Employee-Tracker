@@ -31,7 +31,7 @@ function viewPrompt() {
                 break;
 
             case "BACK":
-                mainPrompt();
+                app.mainPrompt();
                 break;
 
             case "EXIT":
