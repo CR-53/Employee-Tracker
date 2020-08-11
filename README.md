@@ -7,7 +7,7 @@ A Content Management System that allows users to View, Add, Update and Delete HR
 
 [Demo Video](https://vimeo.com/446678602)
 
-![CLI Screenshot](Assets/App demo.png)
+![CLI Screenshot](Assets/App-demo.png)
 
 ## Table of Contents
 1. [Installation](#Installation)
