@@ -5,7 +5,9 @@ A Content Management System that allows users to View, Add, Update and Delete HR
 
 ![License badge](https://img.shields.io/badge/license-MIT-green)
 
-[Video Demo](https://vimeo.com/446678602)
+[Demo Video](https://vimeo.com/446678602)
+
+![CLI Screenshot](Assets/App demo.png)
 
 ## Table of Contents
 1. [Installation](#Installation)
