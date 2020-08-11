@@ -31,7 +31,7 @@ function addPrompt() {
                 break;
 
             case "BACK":
-                mainPrompt();
+                app.mainPrompt();
                 break;
 
             case "EXIT":

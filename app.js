@@ -4,6 +4,7 @@ const util = require("util");
 const connection = require("./Develop/js/connection");
 const view = require("./Develop/js/viewPrompts");
 const add = require("./Develop/js/addPrompts");
+const update = require("./Develop/js/updatePrompts");
 
 function init() {
     console.log(`Employee Tracker v1.0`);
@@ -35,8 +36,7 @@ function mainPrompt() {
                 break;
             
             case "Update":
-                console.log(`This functionality will be available in future updates.`);
-                mainPrompt();
+                update.updatePrompt();
                 break;
             
             case "Delete":
