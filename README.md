@@ -3,9 +3,9 @@
 ## Description
 A Content Management System that allows users to View, Add, Update and Delete HR elements; departments, roles and employees. This application was built using Node.js and uses a MySQL database.  
 
-
 ![License badge](https://img.shields.io/badge/license-MIT-green)
 
+[Video Demo](https://vimeo.com/446678602)
 
 ## Table of Contents
 1. [Installation](#Installation)
