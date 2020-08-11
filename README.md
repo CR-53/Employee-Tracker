@@ -32,10 +32,6 @@ MIT</br>
 Not open for contributions.
 
 
-## Tests
--
-
-
 ## Questions
 You can view my GitHub profile here: https://github.com/CR-53</br>
 If you have any questions, feel free to send me an email: chrisroschi53@gmail.com
